@@ -9,6 +9,15 @@ function writePassword() {
   passwordText.value = password;
 
 }
+var passwordLength = prompt("How long do you want your password?");
+if (passwordLength < 8) {
+  alert("Choose a number greater than 8");
+}
+
+if (passwordLength > 128) {
+  alert("Choose a number less than 128");
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

@@ -1,7 +1,5 @@
 // Assignment Code
 
-// var generatePasswordButton = document.getElementById("generate");
-
 // global variables
 
 var onlyLowerCase = [
@@ -21,7 +19,7 @@ function getPasswordOptions() {
   var length = parseInt(prompt("How long do you want your password to be?"));
 
 // conditional statement to validate if input is a number or not. Prompt ends if false.
-if (notNumber(length) === true) {
+if (isNaN(length) === true) {
   alert("You need to pick a number please");
   return;
 }
@@ -52,22 +50,22 @@ if (!includeLowerCase && !includeUpperCase && !includeNumeric && !includeSpecial
   return;
 }
 
-var questionOptions = {
+var passwordOptions = {
   length: length,
   upperCase: includeUpperCase,
   lowerCase: includeLowerCase,
   specialChar: includeSpecialChar,
   numeric: includeNumeric
 }
-return questionOptions;
+return passwordOptions;
 }
 
 function generatePassword() {
-  var options = generateOptions();
-  console.log(options)
+  var options = getPasswordOptions();
+  console.log(options);
 
   var passwordEntry = [];
-  console.log(passwordEntry)
+  console.log(passwordEntry);
 
   if (options.upperCase) {
     for (i = 0; i < onlyUpperCase.length; i++) {
@@ -89,25 +87,16 @@ function generatePassword() {
       passwordEntry.push(onlyNumeric[i]);
     }
   }
-var finalPassword = "";
+var finalPassword = [];
 
 for (let i = 0; i < options.length; i++) {
-  var randomPicker = Math.floor(Math.random() * passwordEntry.length);
-  finalPassword += passwordEntry[randomPicker]
+  var randomPassword = Math.floor(Math.random() * passwordEntry.length);
+  finalPassword[i] = passwordEntry[randomPassword]
 }
 
 console.log(finalPassword)
-
-document.getElementById("password").value = finalPassword
-
+return finalPassword.join("");
 }
-
-// function createPassword() {
-//   var options = getPasswordCriteria();
-//   console.log(options);
-// }
-
-
 
 // Write password to the #password input
 function writePassword() {
@@ -120,9 +109,4 @@ function writePassword() {
 
 var generateBtn = document.querySelector("#generate");
 
-// Add event listener to generate button
-document.getElementsById("generate").addEventListener("click", function(){
-  document.createPassword();
-});
-
-generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);

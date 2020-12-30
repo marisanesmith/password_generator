@@ -102,32 +102,6 @@ document.getElementById("password").value = finalPassword
 
 }
 
-var password = "";
-
-// document.getElementById()
-
-// generatePassword.addEventListener('click', generatePassword);
-
-// if (
-//   upperCase === false &&
-//   lowerCase === false &&
-//   numbers === false &&
-//   specialChar === false &&)
-// {
-//   alert("you have to select at least one character type");
-//   return;
-// };
-
-// var passwordCriteria = {
-//   length: length,
-//   upperCase: upperCase,
-//   lowerCase: lowerCase,
-//   numbers: numbers,
-//   specialChar: specialChar,
-// };
-
-// return passwordCriteria;
-
 // function createPassword() {
 //   var options = getPasswordCriteria();
 //   console.log(options);

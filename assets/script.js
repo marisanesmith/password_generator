@@ -111,6 +111,8 @@ document.getElementById("password").textContent = officialPassword
 
 }
 
+generatePassword();
+
 var password = "";
 
 // document.getElementById()
@@ -152,6 +154,8 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+writePassword();
 
 var generateBtn = document.querySelector("#generate");
 

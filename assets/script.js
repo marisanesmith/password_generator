@@ -19,12 +19,9 @@ var onlySpecialChar = ["@", "%",  "+", "\\", ",", "/", "'", "!", "#", "$", "^", 
 // function to create a user input using prompts
 function getPasswordOptions() {
   var length = parseInt(prompt("How long do you want your password to be?"));
-  console.log(password.length);
-
-getPasswordOptions();
 
 // conditional statement to validate if input is a number or not. Prompt ends if false.
-if (notNumber(length) == true) {
+if (notNumber(length) === true) {
   alert("You need to pick a number please");
   return;
 }
@@ -40,9 +37,6 @@ if (length > 128) {
   alert("Please choose a password with no more than 128 characters");
   return;
 }
-
-// var pass = ""
-// var tempArray = [""];
  
 // allow user to choose if they want upper case letters
 var includeUpperCase = confirm("Do you want to use uppercase letters?");
@@ -65,7 +59,7 @@ var questionOptions = {
   specialChar: includeSpecialChar,
   numeric: includeNumeric
 }
-return questionsOptions;
+return questionOptions;
 }
 
 function generatePassword() {
@@ -76,38 +70,35 @@ function generatePassword() {
   console.log(passwordEntry)
 
   if (options.upperCase) {
-    for (i = 0; i < onlyUpperCase.length; ++i) {
+    for (i = 0; i < onlyUpperCase.length; i++) {
       passwordEntry.push(onlyUpperCase[i]);
     }
   }
   if (options.lowerCase) {
-    for (i = 0; i < onlyLowerCase.length; ++i) {
+    for (i = 0; i < onlyLowerCase.length; i++) {
       passwordEntry.push(onlyLowerCase[i]);
     }
   }
   if (options.specialChar) {
-    for (i = 0; i < onlySpecialChar.length; ++i) {
+    for (i = 0; i < onlySpecialChar.length; i++) {
       passwordEntry.push(onlySpecialChar[i]);
     }
   }
   if (options.numeric) {
-    for (i = 0; i < onlyNumeric.length; ++i) {
+    for (i = 0; i < onlyNumeric.length; i++) {
       passwordEntry.push(onlyNumeric[i]);
     }
   }
-var finalPassword = [];
+var finalPassword = "";
 
-for (let i = 0; i < options.length; ++i) {
-  var randomPicker = Math.floor(Math.random() * Math.floor(passwordEntry.length));
-  finalPassword.push(passworldEntry[randomPicker])
+for (let i = 0; i < options.length; i++) {
+  var randomPicker = Math.floor(Math.random() * passwordEntry.length);
+  finalPassword += passwordEntry[randomPicker]
 }
 
 console.log(finalPassword)
 
-var officialPassword = finalPassword.join('');
-console.log(officialPassword)
-
-document.getElementById("password").textContent = officialPassword
+document.getElementById("password").value = finalPassword
 
 }
 

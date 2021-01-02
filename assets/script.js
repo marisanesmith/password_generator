@@ -1,6 +1,6 @@
 // Assignment Code
 
-// global variables
+// All of the global variables
 
 var onlyLowerCase = [
   "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
@@ -45,6 +45,7 @@ var includeNumeric = confirm("Do you want to include numbers in your password?")
 // allow user to choose if they want to use special characters
 var includeSpecialChar = confirm("Do you want to include special characters in your password?");
 
+// if the user doesn't choose any of the options, they need to choose at least one character
 if (!includeLowerCase && !includeUpperCase && !includeNumeric && !includeSpecialChar) {
   alert("Your password must contain at least one special character, numbers, upper case letters or lower case letters");
   return;
@@ -60,6 +61,7 @@ var passwordOptions = {
 return passwordOptions;
 }
 
+// function to generate the password
 function generatePassword() {
   var options = getPasswordOptions();
   console.log(options);
@@ -67,21 +69,25 @@ function generatePassword() {
   var passwordEntry = [];
   console.log(passwordEntry);
 
+  // a for loop to add upper case characters to the password if the user chooses 
   if (options.upperCase) {
     for (i = 0; i < onlyUpperCase.length; i++) {
       passwordEntry.push(onlyUpperCase[i]);
     }
   }
+    // a for loop to add lower case characters to the password if the user chooses 
   if (options.lowerCase) {
     for (i = 0; i < onlyLowerCase.length; i++) {
       passwordEntry.push(onlyLowerCase[i]);
     }
-  }
+  }  
+  // a for loop to add special characters to the password if the user chooses 
   if (options.specialChar) {
     for (i = 0; i < onlySpecialChar.length; i++) {
       passwordEntry.push(onlySpecialChar[i]);
     }
   }
+  // a for loop to add numbers to the password if the user chooses 
   if (options.numeric) {
     for (i = 0; i < onlyNumeric.length; i++) {
       passwordEntry.push(onlyNumeric[i]);
@@ -89,6 +95,7 @@ function generatePassword() {
   }
 var finalPassword = [];
 
+// A for loop that chooses the random password combination based on what the user chose in the confirms
 for (let i = 0; i < options.length; i++) {
   var randomPassword = Math.floor(Math.random() * passwordEntry.length);
   finalPassword[i] = passwordEntry[randomPassword]
